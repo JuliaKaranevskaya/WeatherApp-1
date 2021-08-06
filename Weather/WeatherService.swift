@@ -11,7 +11,6 @@ protocol WeatherServiceDelegate {
     func setWeather(weather : Weather)
 }
 
-
 class WeatherService {
     
     var delegate : WeatherServiceDelegate?
@@ -37,8 +36,6 @@ class WeatherService {
                     }
                 }
             }
-            
         }.resume()       
     }
-    
 }

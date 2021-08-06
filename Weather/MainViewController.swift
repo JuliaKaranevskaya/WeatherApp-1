@@ -9,8 +9,6 @@ import UIKit
 import CoreLocation
 
 class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, WeatherServiceDelegate {
-    
-    
 
     @IBOutlet weak var enterData: UITextField!
     @IBOutlet weak var checkBtn: UIButton!
@@ -18,10 +16,8 @@ class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     var locationManager : CLLocationManager!
     let weatherService = WeatherService()
 
-    
-    
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.weatherService.delegate = self
@@ -34,6 +30,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     }
 
     @IBAction func myLocationBtn(_ sender: UIButton) {
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         
@@ -56,20 +53,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManag
    }
     
     @IBAction func checkWeatherBtn(_ sender: UIButton) {
-        
-
     }
     
     func setWeather(weather: Weather) {
-        
-        
-    print(weather.cityName, Float(weather.temp - 273.15), weather.description)
+   
+    //print(weather.cityName, Float(weather.temp - 273.15), weather.description)
 
     }
 
-    
-    
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -81,6 +72,3 @@ class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManag
                 return true
             }  
     }
-    
-
-

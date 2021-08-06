@@ -7,30 +7,31 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, WeatherServiceDelegate {
+    
+    
    
-    
-    
 
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var degreesLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
-    
+    let weatherService = WeatherService()
     var cityName = ""
-    var cityTemp = ""
-    var cityDesc = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-       cityLabel.text = cityName
-       // degreesLabel.text = cityTemp
-      //descriptionLabel.text = cityDesc
-        
+        self.weatherService.delegate = self
+        self.weatherService.getWeather(city: cityName)
         
     }
-
+    func setWeather(weather: Weather) {
    
+        cityLabel.text = weather.cityName
+        degreesLabel.text = String(Int(weather.temp - 273.15))
+        descriptionLabel.text = weather.description
+
+    }
 }
