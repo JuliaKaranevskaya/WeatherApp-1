@@ -11,7 +11,7 @@ import CoreLocation
 class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, WeatherServiceDelegate {
     
     
-    @IBOutlet weak var backImg: UIImageView!
+
     @IBOutlet weak var enterData: UITextField!
     @IBOutlet weak var checkBtn: UIButton!
     

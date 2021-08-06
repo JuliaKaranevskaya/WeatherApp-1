@@ -15,7 +15,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var degreesLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var backImg: UIImageView!
+
     
     var cityName = ""
     var cityTemp = ""
