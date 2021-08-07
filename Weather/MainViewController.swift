@@ -49,10 +49,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         secondVC.cityName = enterData.text!
         let cityName = enterData.text!
         self.weatherService.getWeather(city: cityName)
-
    }
     
     @IBAction func checkWeatherBtn(_ sender: UIButton) {
+        errorMessage()
     }
     
     func setWeather(weather: Weather) {
@@ -70,5 +70,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, CLLocationManag
                     checkBtn.isEnabled = false
                 }
                 return true
-            }  
+            }
+    func errorMessage() {
+        if enterData.text == "" || enterData.text!.count < 3 {
+            let alert = UIAlertController(title: "Error", message: "Something went wrong!Check your city name", preferredStyle: .alert)
+            let okey = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okey)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
+}

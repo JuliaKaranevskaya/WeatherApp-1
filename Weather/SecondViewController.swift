@@ -8,10 +8,8 @@
 import UIKit
 
 class SecondViewController: UIViewController, WeatherServiceDelegate {
-    
-    
-   
 
+    
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var degreesLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -29,9 +27,14 @@ class SecondViewController: UIViewController, WeatherServiceDelegate {
     }
     func setWeather(weather: Weather) {
    
+        
         cityLabel.text = weather.cityName
         degreesLabel.text = String(Int(weather.temp - 273.15))
         descriptionLabel.text = weather.description
 
     }
+    func errorMessage() {
+        //
+    }
+    
 }

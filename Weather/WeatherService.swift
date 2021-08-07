@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol WeatherServiceDelegate {
     func setWeather(weather : Weather)
+    func errorMessage()
 }
 
-class WeatherService {
+class WeatherService : UIViewController {
     
     var delegate : WeatherServiceDelegate?
     
@@ -28,6 +30,9 @@ class WeatherService {
                 let name = json["name"].string
                 let desc = json["weather"][0]["description"].string
                 
+                guard name == cityEscaped else { return self.checkName()}
+                guard temp != nil else { return }
+                guard desc != nil else { return }
                 let weather = Weather(cityName: name!, temp: temp!, description: desc!)
                 
                 if self.delegate != nil {
@@ -38,4 +43,15 @@ class WeatherService {
             }
         }.resume()       
     }
+    
+    func checkName() {
+        
+        let alert = UIAlertController(title: "Error", message: "Check your city name", preferredStyle: .alert)
+        let okey = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        
+        alert.addAction(okey)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
+
+
