@@ -13,7 +13,7 @@ protocol WeatherServiceDelegate {
     func errorMessage()
 }
 
-class WeatherService : UIViewController {
+class WeatherService : UIViewController, WeatherServiceProtocol {
     
     var delegate : WeatherServiceDelegate?
     
